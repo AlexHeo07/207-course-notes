@@ -21,9 +21,26 @@ hide empty members
 interface Chargeable {
   + charge() : void
 }
+abstract Vehicle {
+  # make : String
+  + Vehicle(make: String)
+  + maxSpeed() : int
+}
 
-' TODO: add "abstract class Vehicle", "class Car", and "class ElectricCar"
-'       (with their fields and methods), then add the arrows between all four
-'       types.
+class Car {
+  + Car(make : String)
+  +maxSpeed() : int
+}
+
+class ElectricCar {
+  + ElectricCar(make : String)
+  - batteryLevel : int
+  + maxSpeed() : int
+  + charge()
+}
+
+Car --|> Vehicle
+ElectricCar --|> Car
+ElectricCar ..|> Chargeable
 
 @enduml
